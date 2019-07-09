@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Denuncia{% endblock %}
+
+{% block body %}
+    <h1>Create new Denuncia</h1>
+
+    {{ include('denuncia/_form.html.twig') }}
+
+    <a href="{{ path('denuncia_index') }}">back to list</a>
+{% endblock %}

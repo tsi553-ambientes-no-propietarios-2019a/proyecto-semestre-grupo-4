@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Denuncia index{% endblock %}
+
+{% block body %}
+    <h1>Denuncia index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Foto</th>
+                <th>Fecha</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for denuncium in denuncias %}
+            <tr>
+                <td>{{ denuncium.id }}</td>
+                <td>{{ denuncium.titulo }}</td>
+                <td>{{ denuncium.descripcion }}</td>
+                <td>{{ denuncium.foto }}</td>
+                <td>{{ denuncium.fecha ? denuncium.fecha|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('denuncia_show', {'id': denuncium.id}) }}">show</a>
+                    <a href="{{ path('denuncia_edit', {'id': denuncium.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('denuncia_new') }}">Create new</a>
+{% endblock %}
