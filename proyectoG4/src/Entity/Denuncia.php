@@ -36,6 +36,12 @@ class Denuncia
      */
     private $fecha;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Usuarios", inversedBy="denuncia")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $usuarios;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +91,18 @@ class Denuncia
     public function setFecha(\DateTimeInterface $fecha): self
     {
         $this->fecha = $fecha;
+
+        return $this;
+    }
+
+    public function getUsuarios(): ?Usuarios
+    {
+        return $this->usuarios;
+    }
+
+    public function setUsuarios(?Usuarios $usuarios): self
+    {
+        $this->usuarios = $usuarios;
 
         return $this;
     }
