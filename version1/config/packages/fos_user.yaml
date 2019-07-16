@@ -6,6 +6,4 @@ fos_user:
         address: "victor.espin@epn.edu.ec"
         sender_name: "Omar Espin"
 
-    registration:
-        confirmation:
-            enabled: true
+    
