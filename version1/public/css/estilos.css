@@ -14,8 +14,8 @@ body
 header
 {
     height: 100vh;
-    background: linear-gradient(rgba(243,255,23,.9),
-    rgba(249,179,12,.9)),url(imagenes/mascotas-preferidas-espanoles.jpg) left no-repeat;
+    background: linear-gradient(rgba(201, 87, 5, 0.9),
+    rgba(248, 192, 62, 0.9)),url("../imagenes/cachorros.jpg") left no-repeat;
     background-position: left;
     background-repeat: no-repeat;
     /*posicion del fondo que no se repita*/
@@ -97,6 +97,7 @@ nav ul li
     font-weight: normal;
 }
 
+
 #about img
 {
     width: 378px;
@@ -132,6 +133,7 @@ nav ul li
     font-weight: normal;
 }
 
+
 .contenedor-servicios .violeta
 {
     background-image: linear-gradient(to top, #FCA000, #FBB233);
@@ -152,6 +154,7 @@ nav ul li
     color:#fff;
     /*detectan que los elementos ocupen mas espacio*/
 }
+
 .contenedor-servicios .servicio
 {
     padding: 34px 30px 38px 30px;
@@ -160,6 +163,7 @@ nav ul li
     margin-bottom: 40px;
     position: relative;
 }
+
 .contenedor-servicios h4
 {
     font-size: 30px;
@@ -172,6 +176,7 @@ nav ul li
     margin-bottom: 20px;
     height: 200px;
 }
+
 
 .contenedor-servicios .icono
 {
@@ -275,4 +280,10 @@ nav ul li
     line-height: 31px;
     
 }
-    
+
+
+
+html
+{
+    scroll-behavior:smooth;
+}
