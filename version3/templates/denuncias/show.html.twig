@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Denuncias{% endblock %}
+
+{% block body %}
+    <h1>Denuncias</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ denuncia.id }}</td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <td>{{ denuncia.titulo }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ denuncia.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ denuncia.fecha ? denuncia.fecha|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ denuncia.direccion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('denuncias_index') }}">back to list</a>
+
+    <a href="{{ path('denuncias_edit', {'id': denuncia.id}) }}">edit</a>
+
+    {{ include('denuncias/_delete_form.html.twig') }}
+{% endblock %}
