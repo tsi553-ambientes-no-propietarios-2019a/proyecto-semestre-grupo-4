@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/denuncias")
@@ -17,6 +18,8 @@ class DenunciasController extends AbstractController
 {
     /**
      * @Route("/", name="denuncias_index", methods={"GET"})
+     *
+     *
      */
     public function index(DenunciasRepository $denunciasRepository): Response
     {
@@ -27,6 +30,8 @@ class DenunciasController extends AbstractController
 
     /**
      * @Route("/new", name="denuncias_new", methods={"GET","POST"})
+     *
+     *@IsGranted("ROLE_USER")
      */
     public function new(Request $request): Response
     {
@@ -36,6 +41,7 @@ class DenunciasController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $denuncia->setUser($this->getUser());
             $entityManager->persist($denuncia);
             $entityManager->flush();
 
@@ -50,6 +56,8 @@ class DenunciasController extends AbstractController
 
     /**
      * @Route("/{id}", name="denuncias_show", methods={"GET"})
+     *
+     *@IsGranted("ROLE_USER")
      */
     public function show(Denuncias $denuncia): Response
     {
@@ -60,6 +68,8 @@ class DenunciasController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="denuncias_edit", methods={"GET","POST"})
+     *
+     *@IsGranted("ROLE_USER")
      */
     public function edit(Request $request, Denuncias $denuncia): Response
     {
@@ -80,6 +90,8 @@ class DenunciasController extends AbstractController
 
     /**
      * @Route("/{id}", name="denuncias_delete", methods={"DELETE"})
+     *
+     *@IsGranted("ROLE_USER")
      */
     public function delete(Request $request, Denuncias $denuncia): Response
     {

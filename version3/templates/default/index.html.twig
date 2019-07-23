@@ -24,6 +24,16 @@
 
         </ul>
 
+        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                {% if app.user.name %}
+                    <span class="mr-sm-2">Hola {{ app.user.name }}</span>
+                {% else %}
+                    <span class="mr-sm-2">Hola {{ app.user.username }}</span>
+                {% endif %}
+                <span>(<a href="{{ path("fos_user_security_logout") }}">Salir</a>)</span>
+            {% endif %}
+
+
         <div class="contenedor">
             <div class="contenedor-titulo">
                 <div class="titulo">

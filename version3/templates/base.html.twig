@@ -8,6 +8,16 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+
+        {% if app.user %}
+            {% for role in app.user.roles %}
+                {{ role }}
+            {% endfor %}
+        {% else %}
+            No existe sesion activa
+        {% endif %}
+
+
         <div class="container">
         {% block body %}{% endblock %}
         </div>
