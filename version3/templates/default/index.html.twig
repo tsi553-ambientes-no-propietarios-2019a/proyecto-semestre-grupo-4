@@ -7,41 +7,8 @@
 <link href="{{asset('https://fonts.googleapis.com/css?family=Allan&display=swap')}}" rel="stylesheet">
 
 <body>
-    <header>
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link" href="#Nosotros">Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#Encuentranos">Contactanos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#Maltrato">Maltrato</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Iniciar Sesion</a>
-          </li>
+    
 
-        </ul>
-
-        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                {% if app.user.name %}
-                    <span class="mr-sm-2">Hola {{ app.user.name }}</span>
-                {% else %}
-                    <span class="mr-sm-2">Hola {{ app.user.username }}</span>
-                {% endif %}
-                <span>(<a href="{{ path("fos_user_security_logout") }}">Salir</a>)</span>
-            {% endif %}
-
-
-        <div class="contenedor">
-            <div class="contenedor-titulo">
-                <div class="titulo">
-                    <h1>PetRescue</h1>
-                    <h2>Los animales son nuestra prioridad</h2>
-                </div>
-        </div>
-    </header>
     <main>
         <section id="Nosotros">
             <div class="contenedor">

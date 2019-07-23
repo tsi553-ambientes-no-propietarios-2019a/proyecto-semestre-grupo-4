@@ -1,29 +1,100 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="{{asset('css/estilo2.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        {% if app.user %}
-            {% for role in app.user.roles %}
-                {{ role }}
-            {% endfor %}
-        {% else %}
-            No existe sesion activa
-        {% endif %}
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
 
+    <header>
 
-        <div class="container">
-        {% block body %}{% endblock %}
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ path('homepage') }}">
+            <img src="{{ asset('imagenes/maltrato11.png') }}" alt="PETRESCUE" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{{ path('homepage') }}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Inicio</a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="#Nosotros">Nosotros</a>
+                      <a class="dropdown-item" href="#Encuentranos">Contactanos</a>
+                      <a class="dropdown-item" href="#Maltrato">Maltrato</a>
+                    </div>
+
+                </li>
+
+                {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('fos_user_security_login') }}">Iniciar sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('fos_user_registration_register') }}">Registrarme</a>
+                </li>
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('denuncias_index') }}">Denuncias</a>
+                </li>
+
+                {% if is_granted("ROLE_SUPER_ADMIN") %}
+                <li class="nav-item">
+                    <a class="nav-link" href="">TipoDenuncias</a>
+                </li>
+                {% endif %}
+            </ul>
+
+            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                {% if app.user.name %}
+                    <span class="mr-sm-2">Hola {{ app.user.name }}</span>
+                {% else %}
+                    <span class="mr-sm-2">Hola {{ app.user.username }}</span>
+                {% endif %}
+                <span>(<a href="{{ path("fos_user_security_logout")}}">Salir</a>)</span>
+            {% endif %}
+
         </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        {% block javascripts %}{% endblock %}
-    </body>
+    </nav>
+
+    
+        <div class="contenedor">
+            <div class="contenedor-titulo">
+                <div class="titulo">
+                    <h1>PetRescue</h1>
+                    <h2>Los animales son nuestra prioridad</h2>
+                </div>
+        </div>
+
+        
+    </header>
+
+
+
+    <div class="container">
+        {% block body %}{% endblock %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    {% block javascripts %}{% endblock %}
+</body>
 </html>

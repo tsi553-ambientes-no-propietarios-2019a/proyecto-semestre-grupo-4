@@ -1,0 +1,55 @@
+body
+{
+    
+}
+
+header
+{
+    height: 50vh;
+    background: linear-gradient(rgba(255, 198, 73, 0.9),
+    rgba(255, 171, 45, 0.9)),url("../imagenes/mascotas-preferidas-espanoles.jpg") left no-repeat;
+    background-position: left;
+    background-repeat: no-repeat;
+    /*posicion del fondo que no se repita*/
+    background-size: cover;
+    
+    
+}
+
+.nav-item a
+{
+    color: white;
+    font-size: 25px;
+}
+
+.contenedor
+{
+    width: 100%;
+    max-width: 1300px;
+    margin:auto;
+}
+
+.contenedor-titulo
+{
+    display: flex;
+    justify-content: center;
+    margin:5vh 0;
+
+    /*vh es la altura de la ventana del navegador
+    30 representa el margen arriba y abajo y el 0 el margen de derecha a izquierda*/
+
+}
+
+.contenedor .contenedor-titulo h1
+{
+    text-align: center;
+    color: white;
+    font-family: 'Bungee Outline', cursive;
+    font-size: 150px;
+}
+
+.contenedor .contenedor-titulo h2
+{
+    text-align: center;
+    color: white;
+}
