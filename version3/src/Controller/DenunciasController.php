@@ -23,8 +23,9 @@ class DenunciasController extends AbstractController
      */
     public function index(DenunciasRepository $denunciasRepository): Response
     {
+        $user = $this->getUser();
         return $this->render('denuncias/index.html.twig', [
-            'denuncias' => $denunciasRepository->findAll(),
+            'denuncias' => $denunciasRepository->findBy(["user" => $user]),
         ]);
     }
 

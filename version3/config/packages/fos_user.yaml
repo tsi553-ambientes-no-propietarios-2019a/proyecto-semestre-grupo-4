@@ -12,5 +12,5 @@ fos_user:
             type: App\Form\RegistrationType
 
         confirmation:
-            enabled: true
+            enabled: false
 

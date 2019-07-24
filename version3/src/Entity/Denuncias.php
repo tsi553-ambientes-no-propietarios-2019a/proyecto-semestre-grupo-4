@@ -76,6 +76,13 @@ class Denuncias
      */
     private $user;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Incidencia", inversedBy="denuncias")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $incidencia;
+
+
 
     public function getId(): ?int
     {
@@ -175,18 +182,6 @@ class Denuncias
         return $this->imageSize;
     }
 
-    public function getFecha1(): ?\DateTimeInterface
-    {
-        return $this->fecha1;
-    }
-
-    public function setFecha1(\DateTimeInterface $fecha1): self
-    {
-        $this->fecha1 = $fecha1;
-
-        return $this;
-    }
-
     public function getUser(): ?User
     {
         return $this->user;
@@ -195,6 +190,18 @@ class Denuncias
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getIncidencia(): ?Incidencia
+    {
+        return $this->incidencia;
+    }
+
+    public function setIncidencia(?Incidencia $incidencia): self
+    {
+        $this->incidencia = $incidencia;
 
         return $this;
     }

@@ -9,3 +9,27 @@
 
     <a href="{{ path('denuncias_index') }}">back to list</a>
 {% endblock %}
+
+
+{% block javascripts %}
+    <script>
+        $("#denuncias_categoria").change(function() {
+            var data = {
+                categoria_id: $(this).val()
+            };
+            $.ajax({
+                type: 'post',
+                url: '{{ path("incidencias_by_Categoria") }}',
+                data: data,
+                success: function(data) {
+                    var $incidencia_selector = $('#denuncias_incidencia');
+                    $incidencia_selector.html('<option>Selecciona...</option>');
+                    for (var i = 0, total = data.length; i < total; i++) {
+                        $incidencia_selector.append('<option value="' + data[i].id + '">' + data[i].nombre + '</option>');
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock javascripts %}
+
