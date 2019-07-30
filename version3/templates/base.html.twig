@@ -52,7 +52,10 @@
 
                 {% if is_granted("ROLE_SUPER_ADMIN") %}
                 <li class="nav-item">
-                    <a class="nav-link" href="">TipoDenuncias</a>
+                    <a class="nav-link" href="{{ path('categoria_index') }}">TipoDenuncias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('incidencia_index') }}">Incidencia</a>
                 </li>
                 {% endif %}
             </ul>
