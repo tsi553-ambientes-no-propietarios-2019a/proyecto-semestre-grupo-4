@@ -16,20 +16,21 @@
       
       <th scope="col">titulo</th>
       <th scope="col">descripcion</th>
-      
       <th scope="col">direccion</th>
+      <th scope="col">imagen</th>
+      <th scope="col">fecha</th>
     </tr>
   </thead>
   <tbody>
     {% for denuncia in denuncias %}
     <tr>
       <th scope="row">1</th>
-      
-      
+        
       <td>{{denuncia.titulo}}</td>
       <td>{{denuncia.descripcion}}</td>
-      
       <td>{{denuncia.direccion}}</td>
+      <td><img src="{{ vich_uploader_asset(denuncia, 'imageFile') }}" alt="{{ denuncia.imageName }}" height="50"/></td>
+      <td>{{denuncia.fecha ? denuncia.fecha|date('Y-m-d') : '' }}</td>
       
     </tr>
     {% endfor %}
