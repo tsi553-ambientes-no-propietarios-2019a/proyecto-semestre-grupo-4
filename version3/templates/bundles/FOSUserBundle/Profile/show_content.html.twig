@@ -1,6 +1,31 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-</div>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Perfil{% endblock %}</title>
+    <link rel="stylesheet" href="{{asset('css/estiloPerfil.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<br>
+<br>
+<body>
+    <div class= "card">
+    
+        <div class="card-header">
+            <img src="{{asset('imagenes/perfil.jpg')}}" alt="Profile image" class="profile-img">
+        </div>     
+    
+    
+        <div class="card-body">
+        
+            <div class="fos_user_user_show">
+                <p class="full-name">{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+                <p class="email">{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+            </div>
+    
+        </div>
+    </div>
+</body>

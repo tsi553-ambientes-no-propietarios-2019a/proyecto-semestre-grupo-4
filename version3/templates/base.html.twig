@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="stylesheet" href="{{asset('css/estilo2.css')}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/estilo2.css')}}">
 
     {% block stylesheets %}{% endblock %}
 </head>
@@ -36,7 +36,7 @@
                     </div>
 
                 </li>
-
+                
                 {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('fos_user_security_login') }}">Iniciar sesión</a>
@@ -45,11 +45,11 @@
                     <a class="nav-link" href="{{ path('fos_user_registration_register') }}">Registrarme</a>
                 </li>
                 {% endif %}
-
+                {% if is_granted("ROLE_USER") %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('denuncias_index') }}">Denuncias</a>
                 </li>
-
+                {% endif %}
                 {% if is_granted("ROLE_SUPER_ADMIN") %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('categoria_index') }}">TipoDenuncias</a>
@@ -57,6 +57,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('incidencia_index') }}">Incidencia</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('ver_denuncia') }}">Ver denunicias</a>
+                </li>
+
                 {% endif %}
             </ul>
 

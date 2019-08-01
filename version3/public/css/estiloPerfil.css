@@ -1,0 +1,48 @@
+body
+{
+    font-family: "Raleway";
+    background-color: #ebbd5c;
+}
+
+
+.card .card-header
+{
+    position:relative;
+    height: 48px;
+}
+
+.card .card-header .profile-img
+{
+    width: 96px;
+    height: 96px;
+    border-radius: 1000px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 6px solid #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+    
+}
+
+.card .card-body
+{
+    padding: 10px 40px;
+}
+
+.card .card-body .full-name
+{
+    font-size: 20px;
+    font-weight: 600px;
+    text-transform: uppercase;
+    margin: 10px 0 0;
+    text-align: center;
+}
+
+.card .card-body .email
+{
+    font-size: 13px;
+    color: #777;
+    margin: 5px 0 0;
+    text-align: center;
+}
+
